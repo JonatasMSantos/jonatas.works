@@ -9,8 +9,6 @@ export interface Props {
 
 let { title = await Astro.slots.render('title'), items = [] } = Astro.props;
 
-//console.log(JSON.stringify(items));
-
 title = title.replace(/"/g, '');
 ---
 

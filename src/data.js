@@ -1,5 +1,3 @@
-import { getAsset } from './utils/permalinks';
-
 export const headerData = {
   actions: [{ type: 'button', text: 'My GitHub', href: 'https://github.com/JonatasMSantos' }],
 };
@@ -17,7 +15,6 @@ export const footerData = {
 
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'bi:linkedin', href: '' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/JonatasMSantos' },
   ],
   footNote: `

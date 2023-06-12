@@ -15,8 +15,6 @@ export interface Props extends MetaSEO {
   dontUseTitleTemplate?: boolean;
 }
 
-console.log(getAsset('/favicon.ico'));
-
 const defaultImage = SITE.defaultImage
   ? (
       await getImage({
