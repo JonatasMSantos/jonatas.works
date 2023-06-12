@@ -1,0 +1,62 @@
+---
+import { SITE } from '~/config.mjs';
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+//import Steps from '~/components/widgets/Steps.astro';
+//import FAQs from '~/components/widgets/FAQs.astro';
+import { Item, fetchData } from './../services/trello';
+import Stats from '~/components/widgets/Stats.astro';
+
+const meta = {
+  title: SITE.title,
+  description: SITE.description,
+  dontUseTitleTemplate: true,
+};
+
+let skills: Item[] = await fetchData();
+
+//let welcome: Item = skills[0];
+
+skills.shift();
+---
+
+<Layout {meta}>
+  <Hero
+    callToAction={{
+      text: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/j%C3%B4natas-medeiros-santos-9715a263/',
+      icon: 'bi:linkedin',
+    }}
+  >
+    <Fragment slot="title">
+      Jônatas <span class="hidden xl:inline">Santos</span><br />
+      <hr class="m-4" />
+      <div class="text-4xl">
+        <span class="text-accent dark:text-white highlight"> Portfólio</span>
+      </div>
+    </Fragment>
+  </Hero>
+
+  <Features
+    title="Skills"
+    subtitle="Aqui você vai encontrar minha skills e listas de estudo."
+    highlight="Loaded from Trello"
+    items={skills}
+  />
+
+  <Stats
+    items={[
+      { name: 'Área de TI', value: '+10 anos' },
+      { name: 'Java', value: '+8 anos' },
+      { name: 'Javascript', value: '+8 anos' },
+      { name: 'Node', value: '+8 anos' },
+      { name: 'Angular', value: '+8 anos' },
+      { name: 'SQL', value: '+8 anos' },
+    ]}
+  />
+
+  <Note />
+</Layout>
