@@ -76,7 +76,7 @@ export async function fetchData(): Promise<Item[]> {
             );
             const checkListData: TrelloData = await checkListResponse.json();
 
-            if (checkListData && checkListData) {
+            if (checkListData && checkListData) {              
               const ck: Item = {
                 title: checkListData.name,
                 icon: 'tabler:list-check',
