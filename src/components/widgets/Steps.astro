@@ -4,25 +4,40 @@ import { Item } from '../../services/trello';
 export interface Props {
   title?: string;
   items?: Array<Item>;
+  labels: Array<Item>;
   image?: string | any; // TODO: find HTMLElementProps
 }
 
-let { title = await Astro.slots.render('title'), items = [] } = Astro.props;
+let { title = await Astro.slots.render('title'), items = [], labels } = Astro.props;
 
 title = title.replace(/"/g, '');
+
 ---
 
-<section>
+
+
+<section> 
   <div class="m-6">
     {
       title && (
-        <h2 class="m-4 text-muted text-lg hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out">
-          <Icon
-            name="tabler:arrow-big-right"
-            class="w-6 h-6 inline-block align-text-bottom text-primary dark:text-slate-200"
-          />{' '}
-          {title}
-        </h2>
+
+      <div class="ml-1">        
+        <div class="flex items-center justify-start ml-10 gap-1">
+          {labels && labels.map((l: Item) => (
+            <span class="flex gap-1 items-center justify-center w-20 h-6 bg-slate-200 text-zinc-950 dark:text-zinc-50 dark:bg-slate-800 rounded-md text-xs text-center">
+              {l.name}
+            </span>
+          ))}
+        </div>
+        <h1 class="flex items-center justify-start gap-2 mt-3 text-lg">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border-primary dark:border-blue-700 border-2">
+            <Icon name="tabler:code" class="w-6 h-6 text-primary dark:text-slate-200" />
+          </div>
+
+          {title}  
+        </h1>
+      </div>
+         
       )
     }
 
@@ -30,11 +45,11 @@ title = title.replace(/"/g, '');
       items &&
         items.length > 0 &&
         items.map(({ title, subitems, icon }) => (
-          <div class="ml-8 flex">
-            <div class="flex flex-col items-center mr-4">
+          <div class="ml-5 mt-5 flex">
+            <div class="flex flex-col items-center">
               <div>
                 {
-                  <div class="flex items-center justify-center w-10 h-10 rounded-full border-primary dark:border-blue-700 border-2">
+                  <div class="flex items-center justify-center w-10 h-10">
                     {icon && <Icon name={icon} class="w-6 h-6 text-primary dark:text-slate-200" />}
                   </div>
                 }
@@ -42,13 +57,22 @@ title = title.replace(/"/g, '');
               <div class="w-px h-full bg-gray-300 dark:bg-slate-500" />
             </div>
             <div class="pt-1 pb-8">
-              {title && <p class="mb-2 font-bold"> {title} </p>}
+              {title && <p class="mb-2 ml-3 text-muted text-lg hover:text-gray-300 dark:text-gray-400"> {title} </p>}
               {subitems &&
                 subitems.length &&
                 subitems.map((si: Item) => (
-                  <ul>
-                    <li class="font-normal"> {si.title}</li>
-                  </ul>
+                    <div class="flex justify-start gap-3 mt-5">
+                      { si.completed ? 
+                        <span class="flex gap-1 items-center justify-center w-20 h-6 bg-emerald-100 text-zinc-950 dark:text-zinc-50 dark:bg-green-950 rounded-md text-xs text-center">
+                          <Icon name="tabler:circle-check" class="w-5 dark:text-slate-200" />I got it
+                        </span> : 
+                        <span class="flex gap-1 items-center justify-center w-20 h-6 bg-slate-200 text-zinc-950 dark:text-zinc-50 dark:bg-slate-800 rounded-md text-xs text-center">
+                          <Icon name="tabler:book" class="w-5 dark:text-slate-200" />Studyng
+                        </span>
+                      }
+                      {/*<Icon name={si.completed} class="w-5 h-6 m-0 p-0 dark:text-slate-200" /> */}
+                      <span class="flex-1">{si.title}</span>
+                    </div>
                 ))}
             </div>
           </div>

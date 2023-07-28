@@ -22,12 +22,12 @@ const { items = [] } = Astro.props;
           items &&
             items.length > 0 &&
             items.map(({ title, icon, subitems }) => (
-              <div class="relative flex flex-col p-6 bg-white dark:bg-slate-900 rounded shadow-lg hover:shadow-md transition border border-transparent dark:border-slate-800">
+              <div class="relative flex flex-col p-4 bg-white dark:bg-slate-900 rounded shadow-lg hover:shadow-md transition border border-transparent dark:border-slate-800">
                 <div class="flex items-center">
                   <Icon name={icon} class="w-10 h-10" />
                   <div class="ml-4 text-2xl md:text-2xl font-bold">{title}</div>
                 </div>
-                {subitems && subitems.length && subitems.map((ssb) => <Steps title={ssb.title} items={ssb.subitems} />)}{' '}
+                {subitems && subitems.length > 0 && subitems.map((ssb) => <Steps title={ssb.title} items={ssb.subitems} labels={ssb.labels} />)}{' '}
               </div>
             ))
         }

@@ -2,6 +2,8 @@ export interface Item {
   title?: string;
   description?: string;
   subitems?: Array<Item>;
+  labels?: Array<Item>;
+  completed?: boolean;
   color?: string;
   icon?: string;
   idChecklists?: Array<string>;
@@ -11,9 +13,11 @@ interface TrelloData {
   id?: string;
   name: string;
   cards?: TrelloData[];
+  state?: string;
   color?: string;
   idChecklists?: string[];
   checkItems: TrelloData[];
+  labels: TrelloData[];
 }
 
 export async function fetchData(): Promise<Item[]> {
@@ -22,6 +26,7 @@ export async function fetchData(): Promise<Item[]> {
   const apiKey = import.meta.env.TRELLO_API_KEY;
   const token = import.meta.env.TRELLO_TOKEN;
   const board_id = import.meta.env.TRELLO_BOARD;
+  //const board_id = 'AbC6zqbg';
 
   // Obter todas as listas
   const listsResponse = await fetch(`https://api.trello.com/1/boards/${board_id}/lists?key=${apiKey}&token=${token}`);
@@ -31,6 +36,7 @@ export async function fetchData(): Promise<Item[]> {
     const { name, id } = JSON.parse(JSON.stringify(listsData[index]));
 
     if (name && id) {
+      // Obter todos os cartões da lista
       const cardListResponse = await fetch(`https://api.trello.com/1/lists/${id}/cards?key=${apiKey}&token=${token}`);
       const cardListData = await cardListResponse.json();
 
@@ -47,6 +53,7 @@ export async function fetchData(): Promise<Item[]> {
             const its: Item = {
               title: JSON.stringify(objeto.name),
               icon: 'tabler:list-check',
+              labels: objeto.labels,
               idChecklists: checklistItens,
             };
             return its;
@@ -61,7 +68,7 @@ export async function fetchData(): Promise<Item[]> {
 
   //carregar checklists
   for (let index = 0; index < lists.length; index++) {
-    const element: Item = lists[index];
+    const element: Item = lists[index];   
 
     if (element.subitems) {
       for (let index = 0; index < element.subitems.length; index++) {
@@ -82,7 +89,8 @@ export async function fetchData(): Promise<Item[]> {
                 icon: 'tabler:list-check',
                 subitems: checkListData.checkItems.map((checkItem: TrelloData) => {
                   const ckItem: Item = {
-                    icon: 'tabler:list-check',
+                    icon: checkItem.state === 'incomplete' ? 'tabler:circle-dashed' : 'tabler:circle-check',
+                    completed: checkItem.state === 'incomplete' ? false : true,
                     title: checkItem.name,
                   };
                   return ckItem;
