@@ -1,11 +1,23 @@
 ---
 import { Icon } from 'astro-icon';
+
+export interface Props {
+  title?: string;
+}
+
+const {
+  title = '',
+  //callToAction2 = await Astro.slots.render('callToAction2'),
+  //image = await Astro.slots.render('image'),
+} = Astro.props;
+
 ---
+
 
 <section class="bg-blue-50 dark:bg-slate-800">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
     <span class="font-bold">
-      <Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /> Technology:</span
-    > Tailwind + AstroJS + Typescript + Trello API
+      <Icon name="tabler:info-square" class="w-5 h-5 inline-block align-text-bottom" /></span
+    > {title}
   </div>
 </section>

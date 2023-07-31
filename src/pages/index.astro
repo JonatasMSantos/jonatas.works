@@ -4,11 +4,12 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
+
 //import Steps from '~/components/widgets/Steps.astro';
 //import FAQs from '~/components/widgets/FAQs.astro';
 import { Item, fetchData } from './../services/trello';
 import Stats from '~/components/widgets/Stats.astro';
+import Skills from '~/components/widgets/Skills';
 
 const meta = {
   title: SITE.title,
@@ -53,12 +54,12 @@ skills.shift();
     ]}
   />
 
-  <Features
-    title="Skills"
-    subtitle="Aqui você vai encontrar minha skills e listas de estudo."
-    highlight="Loaded from Trello"
+  <Note title='My roadmap' />
+
+  <Skills    
+    client:only
     items={skills}
   />
 
-  <Note />
+  <Note title='Technology: Tailwind + AstroJS + Typescript + Trello API' />
 </Layout>

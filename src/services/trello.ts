@@ -1,11 +1,13 @@
 export interface Item {
   title?: string;
+  name?: string;
   description?: string;
   subitems?: Array<Item>;
   labels?: Array<Item>;
   completed?: boolean;
   color?: string;
   icon?: string;
+  show?: boolean;
   idChecklists?: Array<string>;
 }
 
