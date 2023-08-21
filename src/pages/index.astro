@@ -4,6 +4,7 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
+
 //import Steps from '~/components/widgets/Steps.astro';
 //import FAQs from '~/components/widgets/FAQs.astro';
 import { Item, fetchData } from './../services/trello';
@@ -49,14 +50,12 @@ skills.shift();
       { name: 'Angular', value: '+8 anos' },
       { name: 'Ionic', value: '+8 anos' },
       { name: 'SQL', value: '+8 anos' },
-      { name: 'ReactJS/React Native', value: '+2 anos' },
-      { name: 'NestJS', value: '+3 anos' },
-      { name: 'NextJS', value: '+1 anos' }
+      { name: 'ReactJS/React Native', value: '+1 anos' }      
     ]}
   />
 
   <Note title='My roadmap' />
- 
+
   <Skills    
     client:only
     items={skills}
