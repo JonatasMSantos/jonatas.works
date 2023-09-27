@@ -1,26 +1,4 @@
-export interface Item {
-  title?: string;
-  name?: string;
-  description?: string;
-  subitems?: Array<Item>;
-  labels?: Array<Item>;
-  completed?: boolean;
-  color?: string;
-  icon?: string;
-  show?: boolean;
-  idChecklists?: Array<string>;
-}
-
-interface TrelloData {
-  id?: string;
-  name: string;
-  cards?: TrelloData[];
-  state?: string;
-  color?: string;
-  idChecklists?: string[];
-  checkItems: TrelloData[];
-  labels: TrelloData[];
-}
+import { TrelloItem as Item, TrelloData } from './../types'
 
 export async function fetchData(): Promise<Item[]> {
   const lists: Item[] = [];

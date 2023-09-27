@@ -38,3 +38,27 @@ export interface MetaSEO {
   ogTitle?: string;
   ogType?: string;
 }
+
+export interface TrelloItem {
+  title?: string;
+  name?: string;
+  description?: string;
+  subitems?: Array<Item>;
+  labels?: Array<Item>;
+  completed?: boolean;
+  color?: string;
+  icon?: string;
+  show?: boolean;
+  idChecklists?: Array<string>;
+}
+
+export interface TrelloData {
+  id?: string;
+  name: string;
+  cards?: TrelloData[];
+  state?: string;
+  color?: string;
+  idChecklists?: string[];
+  checkItems: TrelloData[];
+  labels: TrelloData[];
+}
