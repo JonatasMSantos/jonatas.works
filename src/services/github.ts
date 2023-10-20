@@ -60,7 +60,8 @@ export async function fetchGitHubData(): Promise<Item[]> {
     subItem.name = `${description}`;
     subItem.title = `${description}`;
     subItem.completed = true;
-
+    subItem.url = `${html_url}`
+    
     item.subitems.push(subItem);
 
     if (name.includes('start')) {

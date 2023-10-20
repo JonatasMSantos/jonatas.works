@@ -1,5 +1,8 @@
 export const headerData = {
-  actions: [{ type: 'button', text: 'My GitHub', href: 'https://github.com/JonatasMSantos' }],
+  actions: [
+    { type: 'button', text: 'My GitHub', href: 'https://github.com/JonatasMSantos' },
+    { type: 'button', text: 'LinkedIn', href: 'https://www.linkedin.com/in/j%C3%B4natas-santos-9715a263' }
+  ],
 };
 
 export const footerData = {
@@ -7,8 +10,11 @@ export const footerData = {
     {
       title: 'Meus Sites',
       links: [
-        { text: 'jonatas.works', href: 'https://jonatas.works' },
+        { text: 'jonascript.com.br', href: 'https://jonascript.com.br' },
+        { text: 'amazingbits.com.br', href: 'https://amazingbits.com.br' },
         { text: 'reporte.me', href: 'https://reporte.me' },
+        { text: 'jonatas.works', href: 'https://jonatas.works' },
+        { text: 'dropware.com.br', href: 'https://dropware.com.br' },
       ],
     },
   ],

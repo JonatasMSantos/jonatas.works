@@ -5,8 +5,8 @@ export async function fetchTrelloData(): Promise<Item[]> {
 
   const apiKey = import.meta.env.TRELLO_API_KEY;
   const token = import.meta.env.TRELLO_TOKEN;
-  const board_id = import.meta.env.TRELLO_BOARD;
-  // const board_id = 'AbC6zqbg';
+  // const board_id = import.meta.env.TRELLO_BOARD;
+  const board_id = 'AbC6zqbg';
 
   // Obter todas as listas
   const listsResponse = await fetch(`https://api.trello.com/1/boards/${board_id}/lists?key=${apiKey}&token=${token}`);
