@@ -5,17 +5,20 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 
-import { Item, fetchData } from './../services/trello';
+import { fetchTrelloData }from './../services/trello';
+import { fetchGitHubData }from './../services/github';
 import Stats from '~/components/widgets/Stats.astro';
 import Skills from '~/components/widgets/Skills';
+import { Item } from '~/types';
 
 const meta = {
   title: SITE.title,
   description: SITE.description,
   dontUseTitleTemplate: true,
 };
-
-let skills: Item[] = await fetchData();
+fetchTrelloData
+let skills: Item[] = await fetchTrelloData();
+let projects: Item[] = await fetchGitHubData();
 //let welcome: Item = skills[0];
 
 skills.shift();
@@ -52,6 +55,11 @@ skills.shift();
   />
 
   <Note title='My roadmap | Click on </> in the list to see more' />
+
+  <Skills    
+    client:only
+    items={projects}
+  />
 
   <Skills    
     client:only

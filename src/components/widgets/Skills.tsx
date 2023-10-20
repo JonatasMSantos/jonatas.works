@@ -1,8 +1,8 @@
 import { IconListCheck } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
-import { Item } from '~/services/trello';
 import { SkillsItems } from './SkillsItems';
 import Modal from '../common/Modal';
+import { Item } from '~/types';
 
 
 export interface Props {
@@ -30,9 +30,7 @@ export default function Skills({items}: Props) {
     // setShowModal(true)    
     setSkills((previous) => {
       if (previous) {
-        console.log(previous)
         return previous.map(s => {
-          console.log(s.title, name, s.show)
           if (s.title === name) {
             
             s.show = !s.show
@@ -72,3 +70,4 @@ export default function Skills({items}: Props) {
     </section>
   )  
 }
+

@@ -1,6 +1,6 @@
-import { TrelloItem as Item, TrelloData } from './../types'
+import { Item, TrelloData } from './../types'
 
-export async function fetchData(): Promise<Item[]> {
+export async function fetchTrelloData(): Promise<Item[]> {
   const lists: Item[] = [];
 
   const apiKey = import.meta.env.TRELLO_API_KEY;

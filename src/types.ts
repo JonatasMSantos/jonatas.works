@@ -39,8 +39,9 @@ export interface MetaSEO {
   ogType?: string;
 }
 
-export interface TrelloItem {
+export interface Item {
   title?: string;
+  url?: string;
   name?: string;
   description?: string;
   subitems?: Array<Item>;
