@@ -46,11 +46,9 @@ export async function fetchGitHubData(): Promise<Item[]> {
     const item: Item = {};
 
     item.name = `${name}`;
-    item.title = `Project: ${name}`;
+    item.title = `${name}`;
     item.url = `${html_url}`
-    item.labels = topics.map((t) => {
-      return { name: `${t}` };
-    });
+  
 
     item.completed = true;
     item.subitems = [];
@@ -59,6 +57,10 @@ export async function fetchGitHubData(): Promise<Item[]> {
 
     subItem.name = `${description}`;
     subItem.title = `${description}`;
+    subItem.labels = topics.map((t) => {
+      return { name: `${t}` };
+    });
+    // subItem.icon = `${name}`
     subItem.completed = true;
     subItem.url = `${html_url}`
     
