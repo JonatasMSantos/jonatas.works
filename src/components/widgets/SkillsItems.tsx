@@ -28,7 +28,7 @@ export function SkillsItems({ title, items = [], labels }: Props) {
 
   return (
     <section>
-      <div className="m-6">
+      <div className="mt-6 ml-1">
         {
           title && (
 
@@ -67,7 +67,7 @@ export function SkillsItems({ title, items = [], labels }: Props) {
           showItems && items &&
           items.length > 0 &&
           items.map((item, index) => (
-            <div className="ml-5 mt-5 flex" key={index}>
+            <div className="ml-1 mt-5 flex" key={index}>
               <div className="flex flex-col items-center">
                 <div>
                   {
