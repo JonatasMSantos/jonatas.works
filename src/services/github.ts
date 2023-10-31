@@ -29,13 +29,13 @@ export async function fetchGitHubData(): Promise<Item[]> {
   };
 
   const starterProjects: Item = {
-    title: 'Starters | Github',
+    title: 'Starters Kits | Github',
     icon: 'tabler:list-check',
     subitems: [],
   };
 
   const othersProjects: Item = {
-    title: 'Others | Github',
+    title: 'Projects | Github',
     icon: 'tabler:list-check',
     subitems: [],
   };
@@ -73,8 +73,8 @@ export async function fetchGitHubData(): Promise<Item[]> {
     }
   }
 
-  home.subitems!.push(starterProjects);
   home.subitems!.push(othersProjects);
+  home.subitems!.push(starterProjects);
 
   lists.push(home);
 
