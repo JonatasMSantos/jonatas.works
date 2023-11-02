@@ -22,7 +22,6 @@ export default function Skills({items}: Props) {
   }
 
   useEffect(() => {
-    console.log('entrou')
     setSkills(items)
   }, [items])
 

@@ -5,18 +5,19 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 
-import { fetchTrelloData }from './../services/trello';
-import { fetchGitHubData }from './../services/github';
+import { fetchTrelloData } from './../services/trello';
+import { fetchGitHubData } from './../services/github';
 import Stats from '~/components/widgets/Stats.astro';
 import Skills from '~/components/widgets/Skills';
 import { Item } from '~/types';
+import SkillIcon from '~/components/widgets/SkillIcon';
 
 const meta = {
   title: SITE.title,
   description: SITE.description,
   dontUseTitleTemplate: true,
 };
-fetchTrelloData
+fetchTrelloData;
 let skills: Item[] = await fetchTrelloData();
 let projects: Item[] = await fetchGitHubData();
 //let welcome: Item = skills[0];
@@ -34,7 +35,7 @@ skills.shift();
   >
     <Fragment slot="title">
       Jônatas <span class="hidden xl:inline">Santos</span><br />
-      <hr class="m-4" />      
+      <hr class="m-4" />
     </Fragment>
   </Hero>
 
@@ -47,21 +48,22 @@ skills.shift();
       { name: 'Angular', value: '+8 anos' },
       { name: 'Ionic', value: '+8 anos' },
       { name: 'SQL', value: '+8 anos' },
-      { name: 'ReactJS/React Native', value: '+3 anos' }      
+      { name: 'ReactJS/React Native', value: '+3 anos' },
     ]}
   />
 
-  <Note title='My roadmap | Click on </> in the list to see more' />
+  <div class="flex flex-row gap-1 lg:px-80 px-1 mx-auto items-center justify-center flex-wrap dark:text-white mt-50 m-10">
+    {projects[0] && projects[0].flatLabels!.map((item, index) => <SkillIcon name={item} />)}
+  </div>
 
-  <Skills    
-    client:only
-    items={projects}
-  />
+  <Note title="My roadmap | Click on </> in the list to see more" />
 
+  <Skills client:only items={projects} />
+  
   <Skills    
     client:only
     items={skills}
-  />
+  /> 
 
-  <Note title='Technology: Tailwind + AstroJS + Typescript + Trello API' />
+  <Note title="Technology: Tailwind + AstroJS + Typescript + Trello API" />
 </Layout>

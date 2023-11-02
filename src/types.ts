@@ -46,6 +46,7 @@ export interface Item {
   description?: string;
   subitems?: Array<Item>;
   labels?: Array<Item>;
+  flatLabels?: Array<string>;
   completed?: boolean;
   color?: string;
   icon?: string;

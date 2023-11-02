@@ -8,10 +8,7 @@ export async function fetchGitHubData(): Promise<Item[]> {
   const myHeaders = new Headers();
   myHeaders.append('access_token', 'ACCESS_TOKEN_TO_CHECK');
   myHeaders.append('Content-Type', 'application/json');
-  myHeaders.append(
-    'Authorization',
-    `${token}`
-  );
+  myHeaders.append('Authorization', `${token}`);
 
   const params: RequestInit = {
     method: 'GET',
@@ -19,13 +16,15 @@ export async function fetchGitHubData(): Promise<Item[]> {
     redirect: 'follow',
   };
 
-  const listsResponse = await fetch('https://api.github.com/users/JonatasMSantos/repos', params)
+  const listsResponse = await fetch('https://api.github.com/users/JonatasMSantos/repos', params);
   const listsData: [] = await listsResponse.json();
 
   const home: Item = {
     title: 'Public Projects',
     icon: 'tabler:list-check',
     subitems: [],
+    flatLabels: [],
+    labels: [],
   };
 
   const starterProjects: Item = {
@@ -47,23 +46,33 @@ export async function fetchGitHubData(): Promise<Item[]> {
 
     item.name = `${name}`;
     item.title = `${name}`;
-    item.url = `${html_url}`
-  
+    item.url = `${html_url}`;
 
     item.completed = true;
     item.subitems = [];
 
     const subItem: Item = {};
 
-    subItem.name = `${description}`;
-    subItem.title = `${description}`;
-    subItem.labels = topics.map((t) => {
+    const labels = topics.map((t) => {
       return { name: `${t}` };
     });
+
+    for (let index = 0; index < topics.length; index++) {
+      const element = topics[index];
+      if (!home.flatLabels!.includes(element)) {
+        home.flatLabels!.push(element);
+      }
+    }
+
+    subItem.name = `${description}`;
+    subItem.title = `${description}`;
+    subItem.labels = labels;
+
+    home.labels?.push(...labels);
     // subItem.icon = `${name}`
     subItem.completed = true;
-    subItem.url = `${html_url}`
-    
+    subItem.url = `${html_url}`;
+
     item.subitems.push(subItem);
 
     if (name.includes('start')) {
@@ -73,6 +82,7 @@ export async function fetchGitHubData(): Promise<Item[]> {
     }
   }
 
+  home.flatLabels!.push('... and more!');
   home.subitems!.push(othersProjects);
   home.subitems!.push(starterProjects);
 
