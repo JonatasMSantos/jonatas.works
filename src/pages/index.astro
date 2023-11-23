@@ -18,7 +18,7 @@ const meta = {
   dontUseTitleTemplate: true,
 };
 fetchTrelloData;
-// let skills: Item[] = await fetchTrelloData();
+let skills: Item[] = await fetchTrelloData();
 let projects: Item[] = await fetchGitHubData();
 //let welcome: Item = skills[0];
 
@@ -50,10 +50,10 @@ let projects: Item[] = await fetchGitHubData();
 
   <Skills client:only items={projects} />
   
-  <!-- <Skills    
+  <Skills    
     client:only
     items={skills}
-  />  -->
+  /> 
 
   <Note title="Technology: Tailwind + AstroJS + Typescript + Trello API" />
 </Layout>
