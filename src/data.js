@@ -8,13 +8,14 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: 'Meus Sites',
+      title: 'My Websites',
       links: [
-        { text: 'jonascript.com.br', href: 'https://jonascript.com.br' },
-        { text: 'amazingbits.com.br', href: 'https://amazingbits.com.br' },
-        { text: 'reporte.me', href: 'https://reporte.me' },
-        { text: 'jonatas.works', href: 'https://jonatas.works' },
-        { text: 'dropware.com.br', href: 'https://dropware.com.br' },
+        { text: 'ai-reporte-me.vercel.app', href: 'http://ai-reporte-me.vercel.app/' },
+        { text: 'dropware.vercel.app (🛠️ dropware.com.br)', href: 'https://dropware.vercel.app/' },
+        { text: 'reporte.me (building)', href: 'https://reporte.me' },
+        { text: 'jonatas.works (this)', href: 'https://jonatas.works' },
+        { text: 'jonascript.com.br (building)', href: 'https://jonascript.com.br' },
+        { text: 'amazingbits.com.br (building)', href: 'https://amazingbits.com.br' },
       ],
     },
   ],
