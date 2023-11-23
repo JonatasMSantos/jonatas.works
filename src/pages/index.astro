@@ -2,7 +2,6 @@
 import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 
 import { fetchTrelloData } from './../services/trello';
@@ -11,6 +10,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import Skills from '~/components/widgets/Skills';
 import { Item } from '~/types';
 import SkillIcon from '~/components/widgets/SkillIcon';
+import Typewriter from '~/components/Typewriter';
 
 const meta = {
   title: SITE.title,
@@ -18,26 +18,16 @@ const meta = {
   dontUseTitleTemplate: true,
 };
 fetchTrelloData;
-let skills: Item[] = await fetchTrelloData();
+// let skills: Item[] = await fetchTrelloData();
 let projects: Item[] = await fetchGitHubData();
 //let welcome: Item = skills[0];
 
-skills.shift();
+// skills.shift();
 ---
 
 <Layout {meta}>
-  <Hero
-    callToAction={{
-      text: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/j%C3%B4natas-santos-9715a263',
-      icon: 'bi:linkedin',
-    }}
-  >
-    <Fragment slot="title">
-      Jônatas <span class="hidden xl:inline">Santos</span><br />
-      <hr class="m-4" />
-    </Fragment>
-  </Hero>
+
+  <Typewriter client:only texts={projects[0].flatLabels!.map((item, index) => {return item})}/>
 
   <Stats
     items={[
@@ -60,10 +50,11 @@ skills.shift();
 
   <Skills client:only items={projects} />
   
-  <Skills    
+  <!-- <Skills    
     client:only
     items={skills}
-  /> 
+  />  -->
 
   <Note title="Technology: Tailwind + AstroJS + Typescript + Trello API" />
 </Layout>
+~/components/Typewriter

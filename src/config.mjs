@@ -12,7 +12,7 @@ const CONFIG = {
   defaultImage: defaultImage,
   splitbeeAnalytics: undefined,
 
-  defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  defaultTheme: 'dark', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
   language: 'pt-BR',
   textDirection: 'ltr',
