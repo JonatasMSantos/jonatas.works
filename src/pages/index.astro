@@ -11,6 +11,7 @@ import Skills from '~/components/widgets/Skills';
 import { Item } from '~/types';
 import SkillIcon from '~/components/widgets/SkillIcon';
 import Typewriter from '~/components/Typewriter';
+import { fetchSkillsData } from '~/services/skills';
 
 const meta = {
   title: SITE.title,
@@ -18,11 +19,12 @@ const meta = {
   dontUseTitleTemplate: true,
 };
 fetchTrelloData;
-let skills: Item[] = await fetchTrelloData();
+//let skills: Item[] = await fetchTrelloData();
+let skills: Item[] = await fetchSkillsData();
 let projects: Item[] = await fetchGitHubData();
 //let welcome: Item = skills[0];
 
-// skills.shift();
+skills.shift();
 ---
 
 <Layout {meta}>

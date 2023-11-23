@@ -7,6 +7,7 @@ interface ImportMetaEnv {
     readonly TRELLO_TOKEN: string;
     readonly TRELLO_BOARD: string;
     readonly GITHUB_API: string;
+    readonly SKILLS_URL_API: string;
     // mais variáveis de ambiente...
   }
   
