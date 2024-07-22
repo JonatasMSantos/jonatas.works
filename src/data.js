@@ -10,15 +10,13 @@ export const footerData = {
     {
       title: 'My Projects (Websites)',
       links: [
-        { text: 'ai.reporte.me (AI Companion)', href: 'http://ai-reporte-me.vercel.app/' },
+        { text: 'jonatas.works (this)', href: 'https://jonatas.works' },
+        { text: 'ai.reporte.me (AI Companion)', href: 'https://ai-companion-script.vercel.app/' },
         { text: 'dropware (AI Tools)', href: 'https://dropware.vercel.app/' },
         { text: 'reporte.store (E-commerce)', href: 'https://reporte-store.app/' },
         { text: 'restory (Restore old photos With AI) ', href: 'https://restory-alpha.vercel.app/' },
-        { text: 'cards.reporte.me (Trello Clone) ', href: 'https://cards-reporte-me.vercel.app/' },
-
-        { text: 'reporte.me (building)', href: 'https://reporte.me' },
-        { text: 'jonatas.works (this)', href: 'https://jonatas.works' },
-        { text: 'dropware.com.br (building)', href: 'https://reporte.me' },
+        { text: 'reporte.me (building)', href: 'https://reporte.me' },        
+        { text: 'dropware.com.br (building)', href: 'https://dropware.com.br' },
         { text: 'jonascript.com.br (building)', href: 'https://jonascript.com.br' },
         { text: 'amazingbits.com.br (building)', href: 'https://amazingbits.com.br' },
       ],
